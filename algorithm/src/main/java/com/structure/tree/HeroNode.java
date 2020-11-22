@@ -1,11 +1,14 @@
 package com.structure.tree;
 
 
+import lombok.Data;
+
 import java.util.Stack;
 
 /**
  * 节点
  */
+@Data
 public class HeroNode {
     private int no;
     private String name;
@@ -18,38 +21,6 @@ public class HeroNode {
     }
 
     public HeroNode() {
-    }
-
-    public int getNo() {
-        return no;
-    }
-
-    public void setNo(int no) {
-        this.no = no;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public HeroNode getLeft() {
-        return left;
-    }
-
-    public void setLeft(HeroNode left) {
-        this.left = left;
-    }
-
-    public HeroNode getRight() {
-        return right;
-    }
-
-    public void setRight(HeroNode right) {
-        this.right = right;
     }
 
     @Override

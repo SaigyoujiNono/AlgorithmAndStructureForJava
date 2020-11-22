@@ -1,5 +1,8 @@
 package com.structure.linkedlist;
 
+import lombok.Data;
+
+@Data
 public class HeroNode {
     private int no;
     private String name;
@@ -16,37 +19,6 @@ public class HeroNode {
     public HeroNode() {
     }
 
-    public int getNo() {
-        return no;
-    }
-
-    public void setNo(int no) {
-        this.no = no;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public HeroNode getNext() {
-        return next;
-    }
-
-    public void setNext(HeroNode next) {
-        this.next = next;
-    }
 
     @Override
     public String toString() {

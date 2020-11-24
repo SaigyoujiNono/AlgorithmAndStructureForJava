@@ -17,6 +17,7 @@ public class PolandNotationCalculator {
     final private static int SUB = 1;
     final private static int MUL = 2;
     final private static int DIV = 2;
+    final private static int POWER = 3;
 
     public static void main(String[] args) {
         //先定义一个逆波兰表达式
@@ -26,7 +27,7 @@ public class PolandNotationCalculator {
 //        int cal = calculate(getListString(suffixExpression));
 //        System.out.println(cal);
 
-        String expression = "40-(6*50-34)-(7+18/3)";
+        String expression = "40^2-(6*50-34)-(7+18/3)";
         System.out.println(infixToList(expression));
         List<String> ls = infixToSuffix(infixToList(expression));
 
@@ -67,7 +68,13 @@ public class PolandNotationCalculator {
                     res = num1 * num2;
                 } else if (item.equals("/")) {
                     res = num2 / num1;
-                } else {
+                } else if (item.equals("^")){
+                    res = num2;
+                    for (int i = 1; i < num1; i++) {
+                        res = res*num2;
+                    }
+                    System.out.println(res);
+                }else {
                     throw new RuntimeException("运算符有问题");
                 }
                 stack.push(String.valueOf(res));
@@ -173,6 +180,9 @@ public class PolandNotationCalculator {
                 break;
             case "/":
                 result = DIV;
+                break;
+            case "^":
+                result = POWER;
                 break;
             default:
                 System.out.println("不存在运算符");

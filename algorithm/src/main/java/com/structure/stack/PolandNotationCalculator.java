@@ -30,6 +30,7 @@ public class PolandNotationCalculator {
         String expression = "40^2-(6*50-34)-(7+18/3)";
         System.out.println(infixToList(expression));
         List<String> ls = infixToSuffix(infixToList(expression));
+        System.out.println(ls);
 
         System.out.println(calculate(ls));
 

@@ -1,5 +1,6 @@
 package com.sortalgorithm;
 
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -74,6 +75,23 @@ public class Util {
 
     //展示一维数组
     public static void showIntArray(int arr[]) {
+        for (int i = 0; i < arr.length; i++) {
+            if (i == 0) {
+                System.out.print("[");
+            }
+            if (i < arr.length - 1) {
+                System.out.print(arr[i] + ", ");
+            } else {
+                System.out.print(arr[i]);
+            }
+            if (i == arr.length - 1) {
+                System.out.print("]");
+            }
+        }
+        System.out.println();
+    }
+
+    public static void showByteArray(byte arr[]) {
         for (int i = 0; i < arr.length; i++) {
             if (i == 0) {
                 System.out.print("[");

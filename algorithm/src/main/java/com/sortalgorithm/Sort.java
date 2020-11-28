@@ -8,7 +8,7 @@ public class Sort {
 
     public static void main(String[] args) {
         long creatArray = System.currentTimeMillis();
-        int arr[] = Util.randomArray(1, 8000000);
+        int arr[] = Util.randomArray(1, 50000000);
 //        int arr[] = {4,9,8,5,6};
         long creatArrayCostTime = System.currentTimeMillis() - creatArray;
         System.out.println("数组创建完毕,耗费时长" + creatArrayCostTime + "ms");
@@ -21,10 +21,10 @@ public class Sort {
 //        insertSort(arr);    //插入排序    timeout
 //        shellExchangeSort(arr); //希尔排序-交换式  timeout
 //        shellMoveSort(arr); //希尔排序-移动式  11973ms
-//        quickSort(arr, 0, arr.length - 1);  //快速排序 5088ms
+        quickSort(arr, 0, arr.length - 1);  //快速排序 5088ms
 //        mergeSort(arr); //归并算法  6395ms
 //        radixSort(arr); //基数排序   4620ms
-        heapSort(arr);  //堆排序   11604ms
+//        heapSort(arr);  //堆排序   11604ms
 //        Util.showIntArray(arr);
         System.out.println("排序完成，耗费时长" + (System.currentTimeMillis() - start)+"ms");
 //        Util.showIntArray(arr);
@@ -35,7 +35,7 @@ public class Sort {
     public static void bubbleSort(int arr[]) {
 //        int count = 0;
         boolean flag;
-        while (true) {
+        do {
             flag = true;
 //            count++;
             for (int i = 1; i < arr.length; i++) {
@@ -46,10 +46,7 @@ public class Sort {
                     arr[i] = temp;
                 }
             }
-            if (flag) {
-                break;
-            }
-        }
+        } while (!flag);
 //        System.out.println(count);
     }
 

@@ -17,7 +17,6 @@ public class HuffmanCode {
                 "Butterflies are often polymorphic, and many species make use of camouflage, mimicry and aposematism to evade their predators. Some, like the monarch and the painted lady, migrate over long distances. Many butterflies are attacked by parasites or parasitoids, including wasps, protozoans, flies, and other invertebrates, or are preyed upon by other organisms. Some species are pests because in their larval stages they can damage domestic crops or trees; other species are agents of pollination of some plants. Larvae of a few butterflies (e.g., harvesters) eat harmful insects, and a few are predators of ants, while others live as mutualists in association with ants. Culturally, butterflies are a popular motif in the visual and literary arts.";
         Map<Byte,String> huffmanCodes = getHuffmanCodes(content);
         byte[] by = zip(content.getBytes(),huffmanCodes);
-        int val = Integer.parseInt("0100",2);
         byte[] res =huffmanUnzip(huffmanCodes,by);
         System.out.println("压缩前-> "+Arrays.toString(content.getBytes()));
         System.out.println("解压后-> "+Arrays.toString(res));

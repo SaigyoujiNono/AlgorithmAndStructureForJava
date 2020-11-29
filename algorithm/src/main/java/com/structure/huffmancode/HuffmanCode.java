@@ -7,7 +7,7 @@ public class HuffmanCode {
     //尝试用一个变量记录最后一个补零个数
     private static final int[] mod = {0};
 
-    static Map<Byte, String> huffman;    //编码表
+    private static Map<Byte, String> huffman;    //编码表
 
     public static void main(String[] args) throws Exception {
         String content = "Butterflies are insects in the macrolepidopteran clade Rhopalocera from the order Lepidoptera, which also includes moths. Adult butterflies have large, often brightly coloured wings, and conspicuous, fluttering flight. The group comprises the large superfamily Papilionoidea, which contains at least one former group, the skippers (formerly the superfamily \"Hesperioidea\"), and the most recent analyses suggest it also contains the moth-butterflies (formerly the superfamily \"Hedyloidea\"). Butterfly fossils date to the Paleocene, about 56 million years ago.\n" +
@@ -15,15 +15,21 @@ public class HuffmanCode {
                 "Butterflies have the typical four-stage insect life cycle. Winged adults lay eggs on the food plant on which their larvae, known as caterpillars, will feed. The caterpillars grow, sometimes very rapidly, and when fully developed, pupate in a chrysalis. When metamorphosis is complete, the pupal skin splits, the adult insect climbs out, and after its wings have expanded and dried, it flies off. Some butterflies, especially in the tropics, have several generations in a year, while others have a single generation, and a few in cold locations may take several years to pass through their entire life cycle.\n" +
                 "\n" +
                 "Butterflies are often polymorphic, and many species make use of camouflage, mimicry and aposematism to evade their predators. Some, like the monarch and the painted lady, migrate over long distances. Many butterflies are attacked by parasites or parasitoids, including wasps, protozoans, flies, and other invertebrates, or are preyed upon by other organisms. Some species are pests because in their larval stages they can damage domestic crops or trees; other species are agents of pollination of some plants. Larvae of a few butterflies (e.g., harvesters) eat harmful insects, and a few are predators of ants, while others live as mutualists in association with ants. Culturally, butterflies are a popular motif in the visual and literary arts.";
-        Map<Byte,String> huffmanCodes = getHuffmanCodes(content);
-        byte[] by = zip(content.getBytes(),huffmanCodes);
-        byte[] res =huffmanUnzip(huffmanCodes,by);
+        huffman = getHuffmanCodes(content);
+//        byte[] by = zip(content.getBytes(),huffmanCodes);
+        byte[] by = zip(content.getBytes());
+        byte[] res =huffmanUnzip(huffman,by);
         System.out.println("压缩前-> "+Arrays.toString(content.getBytes()));
         System.out.println("解压后-> "+Arrays.toString(res));
     }
 
+    public static byte[] zip(byte[] bytes){
+        byte[] result = zip(bytes,huffman);
+        return result;
+    }
+
     //huffman解压
-    private static byte[] huffmanUnzip(Map<Byte, String> huffmanCodes, byte[] huffmanBytes) {
+    public static byte[] huffmanUnzip(Map<Byte, String> huffmanCodes, byte[] huffmanBytes) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < huffmanBytes.length; i++) {
             byte b = huffmanBytes[i];
@@ -31,7 +37,7 @@ public class HuffmanCode {
             stringBuilder.append(byteToBitString(!flag, b));
         }
 //        System.out.println(byteToBitString(false, huffmanBytes[huffmanBytes.length - 1]));
-        System.out.println("zip 压缩后的数据-> "+stringBuilder);
+//        System.out.println("zip 压缩后的数据-> "+stringBuilder);
         //解码,反向编码表
         Map<String, Byte> map = reverseMap(huffmanCodes);
 
@@ -118,7 +124,7 @@ public class HuffmanCode {
             res.append(huffmanCodes.get(b));    //res = 8356
         }
         res = new StringBuilder(to8(res.toString()));
-        System.out.println("zip 压缩前的数据-> "+res);
+//        System.out.println("zip 压缩前的数据-> "+res);
         //求bytes数组长度
         int len = (res.length() + 7) / 8; //len = 1045
 //        for (int i = 0; i < res.length()%8; i++) {
@@ -153,7 +159,7 @@ public class HuffmanCode {
         StringBuilder str2 = new StringBuilder(str);
         str2.append(code);
         //判断当前node是叶子节点还是非叶子节点
-        if (-1 == node.getVal()) {//非叶子节点
+        if (null == node.getVal()) {//非叶子节点
             getHuffmanCodes(node.getLeft(), "0", str2, huffmanCodes);
             getHuffmanCodes(node.getRight(), "1", str2, huffmanCodes);
         } else {  //叶子节点

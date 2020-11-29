@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Node implements Comparable<Node>{
-    private byte val = -1;
+    private Byte val = null;
     private int count;
     private Node left;
     private Node right;

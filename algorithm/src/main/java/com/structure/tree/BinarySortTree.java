@@ -83,19 +83,30 @@ public class BinarySortTree {
         }else if (targetNode.left != null && targetNode.right != null){
             int minVal = delRightTreeMin(targetNode.getRight());
             targetNode.value = minVal;
-        }else {
+        }else {//删除只有一颗子树的节点
+            //如果要删除的节点有左子节点
             if (targetNode.left != null){
-                if (parent.left.value == node.value){
-                    parent.left = targetNode.left;
+                if (parent != null){
+                    if (parent.left.value == node.value){
+                        parent.left = targetNode.left;
+                    }else {
+                        parent.right = targetNode.left;
+                    }
                 }else {
-                    parent.right = targetNode.left;
+                    root = targetNode.left;
                 }
-            }else {
-                if (parent.left.value == node.value){
-                    parent.left = targetNode.right;
+
+            }else {//如果要删除的节点有右子节点
+                if (parent != null){
+                    if (parent.left.value == node.value){
+                        parent.left = targetNode.right;
+                    }else {
+                        parent.right = targetNode.right;
+                    }
                 }else {
-                    parent.right = targetNode.right;
+                    root = targetNode.right;
                 }
+
             }
         }
     }

@@ -143,53 +143,8 @@ public class Sort {
         arr[l] = p;
         quickSort(arr, left, r - 1);
         quickSort(arr, r + 1, right);
-
-
-//        int l = left;
-//        int r = right;
-//        int pivot = arr[(left + right) / 2];
-//        System.out.println(pivot);
-//        int temp = 0;   //临时变量
-//        //while循环是为了让pivot值小的放到左边，值大的放到右边
-//        while (l < r) {
-//            //在pivot的左边一直找，找到大于等于pivot值，才退出
-//            while (arr[l] < pivot) {
-//                l += 1;
-//            }
-//            //在pivot的右边一直找，找到小于等于pivot值，才退出
-//            while (arr[r] > pivot) {
-//                r -= 1;
-//            }
-//            //如果条件成立说明pivot的左右的值已经按照左边小于等于pivot，右边全部是大于等于pivot
-//            if (l >= r) {
-//                break;
-//            }
-//            temp = arr[l];
-//            arr[l] = arr[r];
-//            arr[r] = temp;
-//            //如果交换完后，发现这个arr[1] == pivot,r前移
-//            if (arr[l] == pivot) {
-//                r -= 1;
-//            }
-//            //如果交换完后，发现这个arr[r] == pivot,l后移
-//            if (arr[r] == pivot) {
-//                l += 1;
-//            }
-//        }
-//        //如果l==r，必须l++，r--，否则会出现栈溢出
-//        if (l == r) {
-//            l += 1;
-//            r -= 1;
-//        }
-//        //向左递归
-//        if (left < r) {
-//            quickSort(arr, l, r);
-//        }
-//        //向右递归
-//        if (right > l) {
-//            quickSort(arr, l, r);
-//        }
     }
+
 
     //归并排序（分而治之）
 

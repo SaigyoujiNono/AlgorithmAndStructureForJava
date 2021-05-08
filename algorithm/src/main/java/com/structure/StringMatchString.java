@@ -1,8 +1,6 @@
 package com.structure;
 
-import java.util.Arrays;
-
-public class StringMatchString {
+public class StringMatchString{
     static int count1 = 0;
     static int count2 = 0;
 
@@ -55,8 +53,6 @@ public class StringMatchString {
                     return i;
                 }
             }
-
-
         }
         return -1;
     }

@@ -1,9 +1,7 @@
 package com.structure.tree;
 
-import com.sortalgorithm.Util;
 import lombok.Data;
 
-import java.awt.*;
 
 /**
  * 二叉排序树
@@ -25,16 +23,7 @@ public class BinarySortTree {
 
     }
 
-
     private Node root;
-
-
-
-
-
-
-
-
 
     //查找父节点
     public Node searchNodeParent(Node node){
@@ -47,7 +36,10 @@ public class BinarySortTree {
     }
 
     /**
-     *
+     * 二叉排序树删除节点思路
+     * 1）先找到需要删除的节点N
+     * 2）往N的右子树找到一个最小的节点M（或者往左子树寻找一个最大的节点）
+     * 3）将M放到N节点的位置
      * @param node  传入的节点
      * @return  返回以node为根节点的二叉排序树的最小节点的值
      */
@@ -137,14 +129,6 @@ public class BinarySortTree {
         }
         public Node(){}
 
-        /**
-         * 二叉排序树删除节点思路
-         * 1）先找到需要删除的节点N
-         * 2）往N的右子树找到一个最小的节点M（或者往左子树寻找一个最大的节点）
-         * 3）将M放到N节点的位置
-         */
-
-
         //查找节点
         public Node searchNode(Node node){
             if (node.value == this.value){
@@ -155,14 +139,13 @@ public class BinarySortTree {
                 }else{
                     return null;
                 }
-            }else if (node.value < this.value){
+            }else {
                 if (null != this.left){
                     return left.searchNode(node);
                 }else {
                     return null;
                 }
             }
-            return null;
         }
 
         //查找节点的父节点
